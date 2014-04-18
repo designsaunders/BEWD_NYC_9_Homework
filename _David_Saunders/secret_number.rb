@@ -16,29 +16,27 @@ attempts = 0
 
 #Beginning of code block. Get user input and compare it to 'number' value. There are 3 options: Correct, too high, or too low. Different responses for each. 
 loop do
-  begin
-    guess = gets.chomp.to_i
-   
+  guess = gets.chomp.to_i
+ 
+
+  if guess == number
+    puts "Be ye psychic?? You, #{user_name}, guessed my number! It is, indeed, #{number}.\nWell done!"
+    break
+
   
-    if guess == number
-      puts "Be ye psychic?? You, #{user_name}, guessed my number! It is, indeed, #{number}.\nWell done!"
-      break
+  elsif guess > number  
+    puts "NEGATRON! Too high."
+    attempts = attempts += 1
+  else
+    puts "NEGATRON! Too low."
+    attempts = attempts += 1
+  end
 
-    
-    elsif guess > number  
-      puts "NEGATRON! Too high."
-      attempts = attempts += 1
-    else
-      puts "NEGATRON! Too low."
-      attempts = attempts += 1
-	end
-end
-
-#User attempted more than 3 guess, which results in a unique response and the end of the game. 
-if attempts > 2
-	print "ARGH! Le Grand David has vanquished his foe once again! You didn't guess the Mystery Number!\nGAME OVER"
-	break
-end
+  #User attempted more than 3 guess, which results in a unique response and the end of the game. 
+  if attempts > 2
+  	print "ARGH! Le Grand David has vanquished his foe once again! You didn't guess the Mystery Number!\nGAME OVER"
+  	break
+  end
 end
 
 

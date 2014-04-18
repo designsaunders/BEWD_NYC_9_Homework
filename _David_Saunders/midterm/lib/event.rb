@@ -1,28 +1,28 @@
 require 'json'
 require 'rest-client'
+#require 'rubygems'
+#require 'nytimes-articles'
 
 #Event class.
 class Event
-	attr_accessor :name, :date, :location
+  attr_accessor :endpoint_url
 
-	def initialize(name, date, location)
-		@name = name
-		@date = date
-		@location = location
-		
-		
-	end
 
-end
+  BASE_URL = 'http://api.nytimes.com/svc/events/v2/listings'
 
-def get_events
-		res = JSON.load(RestClient.get('http://api.nytimes.com/svc/events/v2/listings.json?&ll=40.756146%2C-73.99021&radius=3000&sort=dist+asc&api-key=06c41782f4c87230d42fe7d14a1e288b:12:69215696'))
-		res["results"].map do |event|
-			e = {name:event["results"]["event_name"], date:event["results"]["date_time_description"], location:event["street_address"]}
- 			e 
-		end
+  def initialize(event)
+    @endpoint_url = "#{BASE_URL}.json?&query=#{event}&api-key=06c41782f4c87230d42fe7d14a1e288b:12:69215696"
+  end
 
-def to_s
-		"#{@name} takes place at #{@location} on #{@date}."
-	end
+  def get
+    response = RestClient.get(endpoint_url)
+    @parsed_result = JSON.parse(response)
+  end
+
+
+  def parsed_response
+  	@parsed_response['results'].map do |event|
+  		  { category: event['results']['category'], borough: event['results']['borough'], free: event['results']['free'], url: event['results']['event_detail_url']}
+    end
+  end
 end

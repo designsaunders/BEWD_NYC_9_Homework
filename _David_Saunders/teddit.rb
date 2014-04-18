@@ -1,6 +1,9 @@
 require 'json'
 require 'rest-client'
 
+def show_new_story_notification(story)
+	"New Story Added! #{story[:title]}, Category: #{story[:category]}, Current Upvotes #{story[:upvotes]}"
+
 def calculate_upvotes(story)
 	story[:upvotes] = 1
 	if story[:title].downcase.include?('cat')
@@ -20,6 +23,7 @@ def get_stories_from_reddit
 	res["data"]["children"].map do |story|
 		s = {title:story["data"]["title"], category:story["data"]["subreddit"]}
 		calculate_upvotes(s)
+		show_new_story_notification(s)
 		s 
 end
 end
