@@ -2,12 +2,13 @@
 require_relative 'lib/event'
 
 def greet
-  puts "Hi, there! Welcome to the NYC events finder. We'll help you find the perfect event!"
+  puts "Hi, there! Welcome to the NYC events finder. We'll help you find the perfect event! What's your name?"
+  name = gets.strip
 
 end
 
 def create_event
-  puts "What are you in the mood for? A movie? The Theatre? Maybe a concert?"
+  puts "Awesome! OK, #{name}, what are you in the mood for? A movie? The Theatre? Maybe a concert?"
   category = gets.strip
 
   puts "What borough are you in?"
