@@ -3,7 +3,6 @@ require_relative 'lib/event'
 
 def greet
   puts "Hi, there! Welcome to the NYC events finder. We'll help you find the perfect event!"
-
 end
 
 def create_event
@@ -48,6 +47,7 @@ end
 
 
 greet
+create_event
 input = gets.strip
 sanitize_input(input)
 
