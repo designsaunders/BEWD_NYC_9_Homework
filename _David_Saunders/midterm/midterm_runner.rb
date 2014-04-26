@@ -2,14 +2,13 @@
 require_relative 'lib/event'
 
 
-def create_user
 	puts "Hi, there! Welcome to the NYC events finder. We'll help you find the perfect event!\n \nWhat's your name, friend?"
 	name = gets.strip.capitalize
 	
 
 	# puts "Sounds great! What borough are you in?"
 	# borough = gets.strip.capitalize
-end
+
 
 
 def get_events_from_manhattan
@@ -67,7 +66,7 @@ def get_events_from_staten_island
 ####################################
 	
 
-	puts "Awesome! Let's get started.\nWhat borough are you in? (M)anhattan? (Q)ueens? (B)rooklyn? Bron(x)? (S)taten Island?"
+	puts "Awesome! OK, #{name}, let's get started.\nWhat borough are you in? (M)anhattan? (Q)ueens? (B)rooklyn? Bron(x)? (S)taten Island?"
 	borough = gets.strip.capitalize
 
 		  if borough == "M"
@@ -82,7 +81,7 @@ def get_events_from_staten_island
 		elsif borough == "X"
 			puts get_events_from_bronx
 			
-		else category == "S"
+		else borough == "S"
 			puts get_events_from_staten_island
 
 	end
