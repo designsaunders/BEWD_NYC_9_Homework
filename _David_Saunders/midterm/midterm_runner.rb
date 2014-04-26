@@ -11,49 +11,55 @@ def create_user
 	# borough = gets.strip.capitalize
 end
 
-
-def get_events_from_manhattan
-	res = JSON.load(RestClient.get('http://api.nytimes.com/svc/events/v2/listings.json?&filters=borough:"Manhattan"'))
+def get_events(borough)
+	res = JSON.load(RestClient.get("http://api.nytimes.com/svc/events/v2/listings.json?&filters=borough:#{borough.capitalize}"))
 		res["results"].map do |event|
-			e = {borough:event["results"]["borough"]}
-			e 
+			{borough:event["results"]["borough"]}
 		end
 	end
+end
+# def get_events_from_manhattan
+# 	res = JSON.load(RestClient.get('http://api.nytimes.com/svc/events/v2/listings.json?&filters=borough:"Manhattan"'))
+# 		res["results"].map do |event|
+# 			e = {borough:event["results"]["borough"]}
+# 			e 
+# 		end
+# 	end
 
-def get_events_from_queens
-	res = JSON.load(RestClient.get('http://api.nytimes.com/svc/events/v2/listings.json?&filters=borough:"Queens"'))
-		res["results"].map do |event|
-			e = {borough:event["results"]["borough"]}
-			e 
-		end
-	end
-
-
-def get_events_from_bronx
-	res = JSON.load(RestClient.get('http://api.nytimes.com/svc/events/v2/listings.json?&filters=borough:"Bronx"'))
-		res["results"].map do |event|
-			e = {borough:event["results"]["borough"]}
-			e 
-		end
-	end
-
-
-def get_events_from_brooklyn
-	res = JSON.load(RestClient.get('http://api.nytimes.com/svc/events/v2/listings.json?&filters=borough:"Brooklyn"'))
-		res["results"].map do |event|
-			e = {borough:event["results"]["borough"]}
-			e 
-		end
-	end
+# def get_events_from_queens
+# 	res = JSON.load(RestClient.get('http://api.nytimes.com/svc/events/v2/listings.json?&filters=borough:"Queens"'))
+# 		res["results"].map do |event|
+# 			e = {borough:event["results"]["borough"]}
+# 			e 
+# 		end
+# 	end
 
 
-def get_events_from_staten_island
-	res = JSON.load(RestClient.get('http://api.nytimes.com/svc/events/v2/listings.json?&filters=borough:"Staten20%Island"'))
-		res["results"].map do |event|
-			e = {borough:event["results"]["borough"]}
-			e 
-		end
-	end
+# def get_events_from_bronx
+# 	res = JSON.load(RestClient.get('http://api.nytimes.com/svc/events/v2/listings.json?&filters=borough:"Bronx"'))
+# 		res["results"].map do |event|
+# 			e = {borough:event["results"]["borough"]}
+# 			e 
+# 		end
+# 	end
+
+
+# def get_events_from_brooklyn
+# 	res = JSON.load(RestClient.get('http://api.nytimes.com/svc/events/v2/listings.json?&filters=borough:"Brooklyn"'))
+# 		res["results"].map do |event|
+# 			e = {borough:event["results"]["borough"]}
+# 			e 
+# 		end
+# 	end
+
+
+# def get_events_from_staten_island
+# 	res = JSON.load(RestClient.get('http://api.nytimes.com/svc/events/v2/listings.json?&filters=borough:"Staten20%Island"'))
+# 		res["results"].map do |event|
+# 			e = {borough:event["results"]["borough"]}
+# 			e 
+# 		end
+# 	end
 
 
 
